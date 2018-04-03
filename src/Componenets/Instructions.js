@@ -1,12 +1,17 @@
 import React from 'react'
-import { Grid } from 'material-ui'
+import { Grid, Typography } from 'material-ui'
 
-export default ({ activeView }) =>
-<Grid container>
-    <Grid item xl={4} lg={4} md={4} sm={4} xs={4}>
-       <h1>IMAGE HERE</h1>
-    </Grid> 
-    <Grid item xl={8} lg={8} md={8} sm={8} xs={8}>
-       <h1>INSTUCTIONS HERE</h1>
-    </Grid> 
+export default ({ activeImage, activeDireactions}) =>
+<Grid container style={{marginTop:30, marginBottom:30}}>
+    <Grid item xl={4} lg={6} md={6} sm={12} xs={12}>
+       <img alt={activeImage.name} src={activeImage.location} style={{marginBottom:10}}/>
+    </Grid>
+    <Grid item xl={8} lg={6} md={6} sm={12} xs={12}>
+       <Typography variant='title' align='left' style={{marginBottom:10}}>
+          {activeDireactions.title}
+       </Typography>
+       <Typography component='p' align='left'>
+          {activeDireactions.text}
+       </Typography>
+    </Grid>
 </Grid>
