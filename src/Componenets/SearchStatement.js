@@ -10,10 +10,8 @@ export default ({ searchStatement }) =>
         <TextField
           id="searchStatement"
           value={searchStatement}
-          //Below updateResearchQuestion
-        //   onChange={this.handleChange('name')}
           margin="normal"
           fullWidth
         />
-    </Grid> 
+    </Grid>
 </Grid>
