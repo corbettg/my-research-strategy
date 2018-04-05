@@ -39,3 +39,8 @@ input:disabled {
   cursor: no-drop;
   border: 2px solid #006666;
 }
+
+button:disabled {
+  cursor: not-allowed;
+  pointer-events: all !important;
+}

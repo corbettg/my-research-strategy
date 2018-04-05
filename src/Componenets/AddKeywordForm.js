@@ -22,8 +22,12 @@ export default ({ data, updateTextBox, question }) =>
             disabled={question ? false: true}
             fullWidth
           />
-        <Typography gutterBottom variant="subheading" component="h2" align="left"
-                    style={{marginTop: 15, marginBottom: -15}}>Synonyms:</Typography>
+        { data.keyword ?
+            <Typography gutterBottom component="p" align="left"
+                    style={{marginTop: 5, marginBottom: -5}}
+                    dangerouslySetInnerHTML={{__html: `<a href="http://www.thesaurus.com/browse/${data.keyword}" target="_blank">Look up synonyms for ${data.keyword}</a>`}}>
+                    </Typography> : ''
+        }
           <TextField
             id={`synonym1_${data.id}`}
             value={data.synonym1}

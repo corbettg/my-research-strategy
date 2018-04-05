@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-
-//redux
 import { AddKeywordForm, AddAdditionalKeywordButton, ButtonControls,
          Instructions, ResearchQuestion, SearchStatement } from '../Componenets'
-import { Grid } from 'material-ui'
+import { Button, Grid } from 'material-ui'
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 class Body extends Component {
     constructor(props) {
@@ -14,6 +13,8 @@ class Body extends Component {
             activeImage: {name: 'Question', location: './images/question-small.png'},
             activeDireactions: {title: 'Create Research Question',
                                 text: 'Start with a clear understanding of your research question or statement. '
+                                    + 'You may have to find background information about your topic (see "Step 2" of '
+                                    + '<a href="https://library.uncw.edu/get_started">Getting Started Researching</a>) '
                                     + 'Write a short question or statement that describes your research. Enter the question or statement below.'},
             question: '',
             keywords: [{id: 0, keyword: '', synonym1: '', synonym2: ''}],
@@ -34,6 +35,8 @@ class Body extends Component {
             activeImage: {name: 'Question', location: './images/question-small.png'},
             activeDireactions: {title: 'Create Research Question',
                                 text: 'Start with a clear understanding of your research question or statement. '
+                                    + 'You may have to find background information about your topic (see "Step 2" of '
+                                    + '<a href="https://library.uncw.edu/get_started">Getting Started Researching</a>) '
                                     + 'Write a short question or statement that describes your research. Enter the question or statement below.'}
           })
           break;
@@ -49,8 +52,10 @@ class Body extends Component {
           this.setState({
             activeImage: {name: 'Question', location: './images/synonyms-small.png'},
             activeDireactions: {title: 'Identify Key Concepts',
-                                text: 'Enter one or two synonyms (words with similar meanings) in the boxes below for each of your key concepts. '
-                                    + 'It\'s easy to find synonyms using an online thesaurus. Click \'Look up synonyms\' next to any of your keywords below.'}
+                                text: 'Enter one or two related terms or synonyms (words with similar meanings) in the boxes below for each of your key concepts. '
+                                    + 'For example: college, university, and "higher education" are all realted terms. '
+                                    + 'It\'s easy to find synonyms using an online thesaurus. Click \'Look up synonyms\' under any of your keywords below.'
+                                    + '<br/><br/><a href="https://library.uncw.edu/resources/do_i_always_need_synonyms_keywords">Wait! Do I always need synonyms? Click here</a>'}
           })
           break;
         default:
@@ -62,7 +67,7 @@ class Body extends Component {
       if (textBox === 'keyword' || textBox === 'synonym1' || textBox === 'synonym2') {
         if (textBox === 'keyword') {
           keywordsCopy[id].keyword = event.target.value
-          if (keywordsCopy[id].keyword === '') { 
+          if (keywordsCopy[id].keyword === '') {
             keywordsCopy[id].synonym1 = ''
             keywordsCopy[id].synonym2 = ''
            }
@@ -102,6 +107,8 @@ class Body extends Component {
           activeImage: {name: 'Question', location: './images/question-small.png'},
           activeDireactions: {title: 'Create Research Question',
                               text: 'Start with a clear understanding of your research question or statement. '
+                                  + 'You may have to find background information about your topic (see "Step 2" of '
+                                  + '<a href="https://library.uncw.edu/get_started">Getting Started Researching</a>) '
                                   + 'Write a short question or statement that describes your research. Enter the question or statement below.'},
           question: '',
           keywords: [{id: 0, keyword: '', synonym1: '', synonym2: ''}],
@@ -126,7 +133,19 @@ class Body extends Component {
                       }
                       <AddAdditionalKeywordButton addAdditionalKeywordForm={this.addAdditionalKeywordForm} />
                     </Grid>
-                    <SearchStatement searchStatement={this.state.searchStatement}/>
+
+                    <Grid container>
+                      <Grid item xl={10} lg={10} md={10} sm={12} xs={12}>
+                        <SearchStatement searchStatement={this.state.searchStatement}/>
+                      </Grid>
+                      <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
+                      <CopyToClipboard text={this.state.searchStatement}>
+                        <Button color="primary" variant="raised" style={{margin: 15, textTransform: 'capitalize'}}>Copy Search Statement to clipboard</Button>
+                      </CopyToClipboard>
+                      </Grid>
+                    </Grid>
+
+
                 </Grid>
                 <Grid item xl={2} lg={2}></Grid>
             </Grid>
@@ -135,5 +154,4 @@ class Body extends Component {
 
 }
 
-//mapStateToProps
 export default Body

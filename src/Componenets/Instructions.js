@@ -10,8 +10,7 @@ export default ({ activeImage, activeDireactions}) =>
        <Typography variant='title' align='left' style={{marginBottom:10}}>
           {activeDireactions.title}
        </Typography>
-       <Typography component='p' align='left'>
-          {activeDireactions.text}
+       <Typography component='p' align='left' dangerouslySetInnerHTML={{__html: activeDireactions.text}}>
        </Typography>
     </Grid>
 </Grid>
