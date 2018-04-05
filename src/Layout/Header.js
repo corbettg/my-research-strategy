@@ -3,7 +3,7 @@ import { AppBar, Button, Toolbar, Typography } from 'material-ui'
 
 export default props =>
 <div style={{flexGrow: 1}}>
-    <AppBar position="static" color="default">
+    <AppBar position="static" color="inherit">
         <Toolbar>
             <Typography variant="title" style={{flex:1}} gutterBottom align="left">
                 Randall Library My Research Strategy

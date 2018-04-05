@@ -8,7 +8,7 @@ const styles = {
     }
 }
 
-export default ({ data, updateTextBox }) =>
+export default ({ data, updateTextBox, question }) =>
 <Grid item xl={3} lg={3} md={4} sm={6} xs={12}>
     <Card style={styles.card}>
         <CardContent>
@@ -19,6 +19,7 @@ export default ({ data, updateTextBox }) =>
             value={data.keyword}
             onChange={(e) => updateTextBox(e, 'keyword', data.id)}
             margin="normal"
+            disabled={question ? false: true}
             fullWidth
           />
         <Typography gutterBottom variant="subheading" component="h2" align="left"
@@ -28,6 +29,7 @@ export default ({ data, updateTextBox }) =>
             value={data.synonym1}
             onChange={(e) => updateTextBox(e, 'synonym1', data.id)}
             margin="normal"
+            disabled={data.keyword ? false: true}
             fullWidth
           />
           <TextField
@@ -35,6 +37,7 @@ export default ({ data, updateTextBox }) =>
             value={data.synonym2}
             onChange={(e) => updateTextBox(e, 'synonym2', data.id)}
             margin="normal"
+            disabled={data.keyword ? false: true}
             fullWidth
           />
         </CardContent>

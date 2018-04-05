@@ -11,6 +11,7 @@ export default ({ searchStatement }) =>
           id="searchStatement"
           value={searchStatement}
           margin="normal"
+          disabled
           fullWidth
         />
     </Grid>
